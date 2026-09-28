@@ -108,7 +108,7 @@ export const updateCategoria = async (req, res, next) => {
     const categoriaActualizada = await Categoria.findByIdAndUpdate(
       id,
       camposActualizar,
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true }
     );
 
     if (!categoriaActualizada) {
@@ -166,7 +166,7 @@ export const deleteCategoria = async (req, res, next) => {
     const desactivada = await Categoria.findByIdAndUpdate(
       id,
       { activo: false },
-      { new: true }
+      { returnDocument: "after" }
     );
 
     if (!desactivada) {

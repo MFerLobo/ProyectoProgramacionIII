@@ -1,3 +1,4 @@
+import "./env.js";
 import { before, after } from "node:test";
 import mongoose from "mongoose";
 import { initTestDB, getTestTokens } from "./setup.js";
@@ -13,7 +14,6 @@ after(async () => {
       await mongoose.connection.close();
     }
   } catch (_) {}
-  // Salida limpia inmediata al concluir todas las suites
   setTimeout(() => {
     process.exit(process.exitCode || 0);
   }, 100);

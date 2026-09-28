@@ -231,7 +231,7 @@ export const deleteUsuario = async (req, res, next) => {
     const desactivado = await Usuario.findByIdAndUpdate(
       id,
       { activo: false },
-      { new: true }
+      { returnDocument: "after" }
     ).select("-password");
 
     if (!desactivado) {

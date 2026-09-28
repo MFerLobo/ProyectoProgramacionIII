@@ -378,7 +378,7 @@ export const updateProducto = async (req, res, next) => {
     const productoActualizado = await Producto.findByIdAndUpdate(
       id,
       camposActualizar,
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true }
     )
       .populate("categoria", "nombre")
       .populate("marca", "nombre");
@@ -492,7 +492,7 @@ export const deleteProducto = async (req, res, next) => {
     const desactivado = await Producto.findByIdAndUpdate(
       id,
       { activo: false },
-      { new: true }
+      { returnDocument: "after" }
     );
 
     if (!desactivado) {

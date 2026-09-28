@@ -112,7 +112,7 @@ export const updateMarca = async (req, res, next) => {
     const marcaActualizada = await Marca.findByIdAndUpdate(
       id,
       camposActualizar,
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true }
     );
 
     if (!marcaActualizada) {
@@ -168,7 +168,7 @@ export const deleteMarca = async (req, res, next) => {
     const desactivada = await Marca.findByIdAndUpdate(
       id,
       { activo: false },
-      { new: true }
+      { returnDocument: "after" }
     );
 
     if (!desactivada) {
