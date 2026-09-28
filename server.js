@@ -45,10 +45,12 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 // Iniciar servidor HTTP
-app.listen(PORT, () => {
-  console.log(`[Servidor] Ejecutándose en el puerto ${PORT}`);
-  console.log(`[Servidor] URL base: http://localhost:${PORT}`);
-  console.log(`[Servidor] Estado API: http://localhost:${PORT}/api/health`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`[Servidor] Ejecutándose en el puerto ${PORT}`);
+    console.log(`[Servidor] URL base: http://localhost:${PORT}`);
+    console.log(`[Servidor] Estado API: http://localhost:${PORT}/api/health`);
+  });
+}
 
 export default app;
